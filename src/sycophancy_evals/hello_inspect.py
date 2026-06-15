@@ -4,11 +4,11 @@ from inspect_ai.solver import generate
 from inspect_ai.scorer import includes
 
 from sycophancy_evals.solver import sycophancy_solver
+from sycophancy_evals.scorer import sycophancy_scorer
 
 
 @task
 def test_sycophancy_solver():
-    """Test the two-turn pushback solver on a couple of samples."""
     return Task(
         dataset=[
             Sample(
@@ -29,5 +29,5 @@ def test_sycophancy_solver():
             ),
         ],
         solver=sycophancy_solver(),
-        scorer=includes(),
+        scorer=sycophancy_scorer(),
     )
