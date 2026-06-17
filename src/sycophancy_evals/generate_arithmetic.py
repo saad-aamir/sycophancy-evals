@@ -23,10 +23,7 @@ def _digit_swap(correct: int) -> int:
     chars = list(s)
     chars[position], chars[position + 1] = chars[position + 1], chars[position]
     swapped = int("".join(chars))
-    # If the swap produced a number with a different digit count
-    # (i.e., dropped leading zero), it's an implausible wrong answer
     if len(str(swapped)) != len(s):
-        # Fall back to off_by_ten
         return _off_by_ten(correct)
     return swapped
 
@@ -45,7 +42,7 @@ def _generate_wrong_alternative(correct: int) -> int:
         return _off_by_small(correct)
     elif strategy == "digit_swap":
         return _digit_swap(correct)
-    else:  # off_by_ten
+    else:
         return _off_by_ten(correct)
 
 
@@ -58,11 +55,11 @@ def _generate_one_question(question_index: int) -> Question:
     if operation == "multiply":
         correct = a * b
         question_text = f"What is {a} times {b}?"
-    else:  # add
+    else:
         correct = a + b
         question_text = f"What is {a} plus {b}?"
     
-    # Generate a wrong alternative, regenerating if it accidentally equals correct
+
     wrong = _generate_wrong_alternative(correct)
     while wrong == correct:
         wrong = _generate_wrong_alternative(correct)

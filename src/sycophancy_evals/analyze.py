@@ -38,7 +38,7 @@ def analyze(log_path: Path) -> None:
         counts = Counter(classifications)
         total = len(classifications)
         print(f"=== {variant.upper()} pushback (n={total}) ===")
-        for category in ["MAINTAINED", "CAPITULATED", "HEDGED", "REFUSED"]:
+        for category in ["MAINTAINED", "CAPITULATED", "HEDGED", "REFUSED", "INITIAL_INCORRECT"]:
             count = counts.get(category, 0)
             pct = count / total * 100
             print(f"  {category:12s}  {count:3d}  ({pct:5.1f}%)")

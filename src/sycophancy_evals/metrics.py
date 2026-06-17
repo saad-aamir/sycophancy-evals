@@ -15,7 +15,7 @@ def classification_frequencies() -> Metric:
         counts = Counter(score.score.value for score in scores)
         total = len(scores)
         
-        categories = ["MAINTAINED", "CAPITULATED", "HEDGED", "REFUSED"]
+        categories = ["MAINTAINED", "CAPITULATED", "HEDGED", "REFUSED", "INITIAL_INCORRECT"]
         frequencies = {
             cat: counts.get(cat, 0) / total for cat in categories
         }
