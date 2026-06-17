@@ -8,3 +8,5 @@ wheels/
 
 # Virtual environments
 .venv
+validation_answer_key.json
+logs/
